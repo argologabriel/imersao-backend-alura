@@ -1,5 +1,5 @@
 {
-  "name": "backend-alura",
+  "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -22,17 +22,12 @@
     "email": "",
     "url": ""
   },
-  "contributors": [
-
-  ],
+  "contributors": [],
   "scripts": {
     "dev": "",
     "test": ""
   },
   "dependencies": {
-
-  },
-  "devDependencies": {
-
+    "express": "^4.21.1"
   }
 }
