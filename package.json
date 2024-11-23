@@ -24,7 +24,7 @@
   },
   "contributors": [],
   "scripts": {
-    "dev": "",
+    "dev": "node --watch --env-file=.env src/api/server.js",
     "test": ""
   },
   "dependencies": {
