@@ -1,12 +1,14 @@
 import express from "express";
+import { connectToDB } from "../api/config/dbConfig.js";
+
+const connection = await connectToDB(process.env.STRING_CONNECTION);
 
 const app = express();
-
-app.use(express.json());
 
 app.listen(3000, () => {
 	console.log("Servidor escutando...");
 });
+app.use(express.json());
 
 
 app.get("/", (req, res) => {
