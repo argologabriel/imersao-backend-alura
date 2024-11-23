@@ -18,3 +18,16 @@ app.get("/", (req, res) => {
 		}
 	);
 });
+
+// Função para pegar todas as tarefas
+async function getAllTasks() {
+	const db = connection.db("todolist");
+	const collection = db.collection("tasks");
+	return collection.find().toArray();
+}
+
+// Endpoint para pegar todas as tarefas
+app.get("/tasks", async (req, res) => {
+	const tasks = await getAllTasks();
+	res.status(200).json(tasks);
+});
