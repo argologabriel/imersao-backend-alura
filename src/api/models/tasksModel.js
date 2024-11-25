@@ -17,5 +17,13 @@ export async function getTaskByIdDB(taskId) {
 
 	const db = connection.db("todolist");
 	const collection = db.collection("tasks");
-	return await collection.findOne({_id: new mongodb.ObjectId(taskId)});
+	return await collection.findOne({ _id: new mongodb.ObjectId(taskId) });
+}
+
+// Função para buscar uma task pelo seu Nome
+export async function getTaskByNameDB(taskName) {
+
+	const db = connection.db("todolist");
+	const collection = db.collection("tasks");
+	return await collection.findOne({ name: { $regex: new RegExp(taskName, "i") } });
 }
