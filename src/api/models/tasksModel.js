@@ -27,3 +27,11 @@ export async function getTaskByNameDB(taskName) {
 	const collection = db.collection("tasks");
 	return await collection.findOne({ name: { $regex: new RegExp(taskName, "i") } });
 }
+
+// Função para adicionar uma nova tarefa
+export async function createNewTaskDB(task) {
+
+	const db = connection.db("todolist");
+	const collection = db.collection("tasks");
+	return await collection.insertOne(task);
+}

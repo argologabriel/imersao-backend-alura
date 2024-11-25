@@ -1,4 +1,9 @@
-import { getAllTasksDB, getTaskByIdDB, getTaskByNameDB, postNewTaskDB } from "../models/tasksModel.js";
+import { 
+	getAllTasksDB, 
+	getTaskByIdDB,
+	getTaskByNameDB, 
+	createNewTaskDB
+} from "../models/tasksModel.js";
 
 export async function getAllTasks(req, res) {
 
@@ -18,4 +23,17 @@ export async function getTaskByName(req, res) {
 	const taskName = req.params.name;
 	const task = await getTaskByNameDB(taskName);
 	res.status(200).json(task);
+}
+
+export async function createNewTask(req, res) {
+
+	const task = req.body;
+	task.done = "false";
+	task.date = new Date(task.date);
+
+	const postMessage = await createNewTaskDB(task);
+	res.status(200).json({
+		message: postMessage,
+		taskCreated: task
+	});
 }
