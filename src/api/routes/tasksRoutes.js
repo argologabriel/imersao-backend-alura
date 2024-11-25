@@ -4,7 +4,8 @@ import {
 	getTaskById,
 	getTaskByName, 
 	createNewTask,
-	updateTask
+	updateTask,
+	deleteTask
 } from "../controllers/tasksController.js";
 
 export const routes = (app) => {
@@ -24,4 +25,7 @@ export const routes = (app) => {
 
 	// Endpoint para alterar uma tarefa já existente
 	app.put("/updateTask/:id", updateTask);
+
+	// Endpoint para excluir uma tarefa existente
+	app.delete("/deleteTask/:id", deleteTask);
 }

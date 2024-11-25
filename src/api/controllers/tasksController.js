@@ -3,7 +3,8 @@ import {
 	getTaskByIdDB,
 	getTaskByNameDB, 
 	createNewTaskDB,
-	updateTaskDB
+	updateTaskDB,
+	deleteTaskDB
 } from "../models/tasksModel.js";
 
 export async function getAllTasks(req, res) {
@@ -51,4 +52,12 @@ export async function updateTask(req, res) {
 		message: updatedMessage,
 		taskUpdated: taskUpdated
 	});
+}
+
+export async function deleteTask(req, res) {
+
+	const taskId = req.params.id;
+	
+	const delMessage = await deleteTaskDB(taskId);
+	res.status(200).json(delMessage);
 }

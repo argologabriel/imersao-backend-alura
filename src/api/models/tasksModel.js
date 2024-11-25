@@ -43,3 +43,11 @@ export async function updateTaskDB(taskId, taskUpdate) {
 	const collection = db.collection("tasks");
 	return await collection.updateOne({ _id: new mongodb.ObjectId(taskId) }, { $set: taskUpdate });
 }
+
+// Função para deletar uma tarefa existente
+export async function deleteTaskDB(taskId) {
+
+	const db = connection.db("todolist");
+	const collection = db.collection("tasks");
+	return await collection.deleteOne({ _id: new mongodb.ObjectId(taskId) });
+}
