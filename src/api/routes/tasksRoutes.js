@@ -3,7 +3,8 @@ import {
 	getAllTasks, 
 	getTaskById,
 	getTaskByName, 
-	createNewTask
+	createNewTask,
+	updateTask
 } from "../controllers/tasksController.js";
 
 export const routes = (app) => {
@@ -20,4 +21,7 @@ export const routes = (app) => {
 
 	// Endpoint para adicionar uma nova tarefa
 	app.post("/createNewTask", createNewTask);
+
+	// Endpoint para alterar uma tarefa já existente
+	app.put("/updateTask/:id", updateTask);
 }

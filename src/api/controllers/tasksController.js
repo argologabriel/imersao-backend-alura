@@ -2,7 +2,8 @@ import {
 	getAllTasksDB, 
 	getTaskByIdDB,
 	getTaskByNameDB, 
-	createNewTaskDB
+	createNewTaskDB,
+	updateTaskDB
 } from "../models/tasksModel.js";
 
 export async function getAllTasks(req, res) {
@@ -35,5 +36,19 @@ export async function createNewTask(req, res) {
 	res.status(200).json({
 		message: postMessage,
 		taskCreated: task
+	});
+}
+
+export async function updateTask(req, res) {
+
+	const taskId = req.params.id;
+
+	const taskUpdated = req.body;
+	taskUpdated.date = new Date(taskUpdated.date);
+
+	const updatedMessage = await updateTaskDB(taskId, taskUpdated);
+	res.status(200).json({
+		message: updatedMessage,
+		taskUpdated: taskUpdated
 	});
 }

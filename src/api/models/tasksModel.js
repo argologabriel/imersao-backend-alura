@@ -35,3 +35,11 @@ export async function createNewTaskDB(task) {
 	const collection = db.collection("tasks");
 	return await collection.insertOne(task);
 }
+
+// Função para atualizar uma tarefa já existente 
+export async function updateTaskDB(taskId, taskUpdate) {
+	
+	const db = connection.db("todolist");
+	const collection = db.collection("tasks");
+	return await collection.updateOne({ _id: new mongodb.ObjectId(taskId) }, { $set: taskUpdate });
+}
